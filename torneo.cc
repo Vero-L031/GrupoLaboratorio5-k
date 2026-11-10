@@ -58,4 +58,16 @@ void MostrarEquipos(const Torneo& torneo) {
     std::cout << it->nombre << " - " << it->pais
               << " - Ranking: " << it->ranking << "\n";
   }
-}
+}bool EliminarEquipo(Torneo& torneo, const std::string& nombre) {
+  // El set compara solo por nombre, así que basta un Equipo de búsqueda
+  Equipo equipo_buscado{nombre, "", 0};
+
+  auto it = torneo.find(equipo_buscado);
+
+  // si no existe, find devuelve end() y no se puede borrar
+  if (it == torneo.end()) {
+    return false;
+  }
+
+  torneo.erase(it);
+  return true;
