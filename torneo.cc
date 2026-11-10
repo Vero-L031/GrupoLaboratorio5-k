@@ -21,7 +21,7 @@ using Torneo = std::set<Equipo, ComparadorNombre>;
 bool ValidarEquipo(const Equipo& e);
 
 //decalarión de funciones
-bool AgregarEquipo(Torneo& torneo, const Equipo e);
+bool AgregarEquipo(Torneo& torneo, const Equipo& e);
 void BuscarEquipo(const Torneo& torneo, const std::string& nombre);
 bool EliminarEquipo(Torneo& torneo, const std::string& nombre);
 void MostrarEquipo(const Torneo& torneo);
@@ -42,7 +42,7 @@ bool ValidarEquipo(const Equipo& e){
     return !e.nombre.empty() && !e.pais.empty() && e.ranking > 0;
 }
 
-bool agregarEquipo(Torneo& torneo, const Equipo e){
+bool AgregarEquipo(Torneo& torneo, const Equipo& e){
     if(!ValidarEquipo(e)){
         std::cout << "Datos invalidos: el nombre del equipo no puede estar vacío, el país no puede estar vacío y el ranking debe ser mayor que 0.\n";
         // No se insertó debido a validación fallida
